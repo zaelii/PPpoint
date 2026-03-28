@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Teste Backend</title>
+</head>
+<body>
+
+<h2>Cadastro</h2>
+<input type="email" id="cadEmail" placeholder="Email">
+<input type="password" id="cadSenha" placeholder="Senha">
+<button onclick="cadastrar()">Cadastrar</button>
+
+<h2>Login</h2>
+<input type="email" id="loginEmail" placeholder="Email">
+<input type="password" id="loginSenha" placeholder="Senha">
+<button onclick="login()">Login</button>
+
+<h3>Resposta:</h3>
+<pre id="resposta"></pre>
+
+<script>
+    const API = "http://localhost:8080";
+
+    async function cadastrar() {
+        const email = document.getElementById("cadEmail").value;
+        const password = document.getElementById("cadSenha").value;
+
+        try {
+            const response = await fetch(`${API}/auth/register`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.text();
+
+            console.log("STATUS:", response.status);
+            console.log("RESPOSTA:", data);
+
+            document.getElementById("resposta").innerText =
+                "Cadastro:\n" + data;
+
+        } catch (error) {
+            console.error("Erro:", error);
+            document.getElementById("resposta").innerText =
+                "Erro ao cadastrar: " + error;
+        }
+    }
+
+    async function login() {
+        const email = document.getElementById("loginEmail").value;
+        const password = document.getElementById("loginSenha").value;
+
+        try {
+            const response = await fetch(`${API}/auth/login`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.text();
+
+            console.log("STATUS:", response.status);
+            console.log("RESPOSTA:", data);
+
+            document.getElementById("resposta").innerText =
+                "Login:\n" + data;
+
+            // Salvar token se existir
+            try {
+                const json = JSON.parse(data);
+                if (json.token) {
+                    localStorage.setItem("token", json.token);
+                    console.log("Token salvo!");
+                }
+            } catch {}
+
+        } catch (error) {
+            console.error("Erro:", error);
+            document.getElementById("resposta").innerText =
+                "Erro no login: " + error;
+        }
+    }
+</script>
+
+</body>
+</html>
