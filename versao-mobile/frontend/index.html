@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="css/style.css" />
+  <title>Point Event Mobile</title>
+</head>
+
+<body>
+
+<div class="topo-container">
+
+  <div class="menu-wrapper">
+    <button id="btnProgramacao" onclick="mostrarPagina('programacao')">Programação</button>
+    <button id="btnPonto" class="active" onclick="mostrarPagina('ponto')">Point</button>
+    <button id="btnRetrospectiva" onclick="mostrarPagina('retrospectiva')">Retrospectiva</button>
+  </div>
+
+  <div class="login-wrapper">
+    <div id="btn-login-topo" class="btn-login-topo" data-logged="false">Entrar</div>
+  </div>
+
+</div>
+
+<div class="paginas">
+
+  <div class="pagina" id="programacao">
+    <p>Em breve</p>
+  </div>
+
+  <div class="pagina active" id="ponto">
+    <div class="calendario">
+      <button id="voltarMes" onclick="mesAnterior()">&#8249;</button>
+      <button id="proximoMes" onclick="proximoMes()">&#8250;</button>
+
+      <div class="cabeçalho">
+        <div class="Mes" id="Mes"></div>
+      </div>
+
+      <div class="semanas">
+        <div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
+      </div>
+
+      <div class="dias" id="dias"></div>
+    </div>
+  </div>
+
+  <div class="pagina" id="retrospectiva">
+    <p>AO FINAL DO EVENTO ESTARÁ AQUI</p>
+  </div>
+
+</div>
+
+<div id="janela-login/cadastro" class="fundo-trasparente">
+  <div class="janelalogin">
+
+    <div class="botoes-logar-registrar">
+      <button onclick="mostrarLogin()">Entrar</button>
+      <button onclick="mostrarCadastro()">Criar Conta</button>
+    </div>
+
+    <div id="loginForm">
+      <h2>Login</h2>
+      <input type="text" id="loginUsuario" placeholder="Email ou @instagram">
+      <input type="password" id="loginSenha" placeholder="Senha">
+      <button onclick="fazerLogin()">Entrar</button>
+    </div>
+
+    <div id="registerForm" style="display:none;">
+      <h2>Crie uma conta</h2>
+      <input type="email" id="cadastroEmail" placeholder="Email">
+      <input type="password" id="cadastroSenha" placeholder="Senha">
+      <input type="text" id="cadastroInstagram" placeholder="@instagram">
+      <button onclick="registrar()">Criar</button>
+    </div>
+
+    <span class="fecharlogin" onclick="fecharLoginCadastro()">×</span>
+  </div>
+</div>
+
+<div id="janela-dia-encerrado" class="fundo-trasparente">
+  <div class="janela-encerrado">
+    <span class="fechar" onclick="fecharJanelaEncerrado()">×</span>
+    <h3>Tempo de registro encerrado</h3>
+    <p>O período de registro só fica disponível até 24h após o dia.</p>
+  </div>
+</div>
+
+<div id="janela-dia-Bloqueado" class="fundo-trasparente">
+  <div class="janela-bloqueado">
+    <span class="fechar" onclick="fecharJanelaBloqueado()">×</span>
+    <h3>Disponível em breve</h3>
+    <p>Calma lá! Você só pode registrar no dia seguinte ao evento.</p>
+  </div>
+</div>
+
+<div id="janela-registrar-dia" class="fundo-trasparente">
+  <div class="janela-registrar">
+    <span class="fechar" onclick="fecharJanelaRegistrarDia()">×</span>
+    <h3>registre o dia passado</h3>
+  </div>
+</div>
+
+<script src="js/script.js"></script>
+</body>
+</html>
