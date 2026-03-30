@@ -1,12 +1,12 @@
+// ====== CALENDÁRIO ======
 const nomesMeses = ["Jun", "Jul"];
 let mesAtual = 0;
 const ano = 2026;
-const agoraFixo = new Date(2026, 5, 16, 12, 0, 0);
-let paginaAtual = "ponto"; // apenas uma vez
+const agoraFixo = new Date(2026, 5, 9, 12, 0, 0);
+let paginaAtual = "ponto";
 
 renderizarCalendario();
 
-//  CALENDÁRIO 
 function dentroDoEvento(mes, dia) {
   if (mes === 0 && dia >= 3) return true;
   if (mes === 1 && dia <= 5) return true;
@@ -40,9 +40,7 @@ function renderizarCalendario() {
   let primeiroDia = new Date(ano, mesReal, 1).getDay();
   let totalDias = new Date(ano, mesReal + 1, 0).getDate();
 
-  for (let i = 0; i < primeiroDia; i++) {
-    containerDias.innerHTML += "<div></div>";
-  }
+  for (let i = 0; i < primeiroDia; i++) containerDias.innerHTML += "<div></div>";
 
   for (let dia = 1; dia <= totalDias; dia++) {
     let flag = document.createElement("div");
@@ -63,7 +61,7 @@ function renderizarCalendario() {
 }
 
 function proximoMes() {
-  if (mesAtual < 1) {
+  if (mesAtual < nomesMeses.length - 1) {
     mesAtual++;
     renderizarCalendario();
   }
@@ -76,84 +74,69 @@ function mesAnterior() {
   }
 }
 
-//  MENU 
 function mostrarPagina(alvo) {
   if (alvo === paginaAtual) return;
 
-  // alterna conteúdo
   document.getElementById(paginaAtual).classList.remove("active");
   document.getElementById(alvo).classList.add("active");
 
-  // atualiza menu
   atualizarMenu(alvo);
   paginaAtual = alvo;
 }
 
 function atualizarMenu(ativo) {
-  document.querySelectorAll(".menu button")
-    .forEach(btn => btn.classList.remove("active"));
-
+  document.querySelectorAll(".menu button").forEach(btn => btn.classList.remove("active"));
   const btnId = "btn" + ativo.charAt(0).toUpperCase() + ativo.slice(1);
   const botao = document.getElementById(btnId);
   if (botao) botao.classList.add("active");
 }
 
-// ----- LOGIN / CADASTRO -----
 function abrirLoginCadastro() {
-  document.getElementById("janela-login/cadastro").style.display = "block";
+  document.getElementById("janela-login").style.display = "flex";
 }
 
 function fecharLoginCadastro() {
-  document.getElementById("janela-login/cadastro").style.display = "none";
+  document.getElementById("janela-login").style.display = "none";
 }
 
 function mostrarLogin() {
   document.getElementById("loginForm").style.display = "block";
   document.getElementById("registerForm").style.display = "none";
-
-  const botoes = document.querySelectorAll(".botoes-logar-registrar button");
-  botoes.forEach(btn => btn.classList.remove("active"));
-  botoes[0].classList.add("active");
 }
 
 function mostrarCadastro() {
   document.getElementById("loginForm").style.display = "none";
   document.getElementById("registerForm").style.display = "block";
-
-  const botoes = document.querySelectorAll(".botoes-logar-registrar button");
-  botoes.forEach(btn => btn.classList.remove("active"));
-  botoes[1].classList.add("active");
 }
 
 function registrar() {
   const email = document.getElementById("cadastroEmail").value;
   const senha = document.getElementById("cadastroSenha").value;
-  const insta = document.getElementById("cadastroInstagram").value;
+  const usuario = document.getElementById("cadastroUsuario").value;
 
-  if (!email || !senha || !insta) {
-    alert("Preencha tudo!");
+  if (!email || !senha || !usuario) {
+    alert("Preencha todos os campos!");
     return;
   }
 
-  localStorage.setItem("usuario", JSON.stringify({ email, senha, insta }));
-  alert("Conta criada!");
-  fecharLoginCadastro();
-}
+  localStorage.setItem("usuario", JSON.stringify({ email, senha, usuario }));
 
+  alert("Conta criada com sucesso!.");
+
+  mostrarLogin();
+}
 function fazerLogin() {
-  const usuario = document.getElementById("loginUsuario").value;
-  const senha = document.getElementById("loginSenha").value;
+  const usuarioInput = document.getElementById("loginUsuario").value;
+  const senhaInput = document.getElementById("loginSenha").value;
   const dados = JSON.parse(localStorage.getItem("usuario"));
 
-  if (dados && senha === dados.senha &&
-      (usuario === dados.email || usuario === dados.insta)) {
-
-    alert("Login OK!");
+  if (dados && senhaInput === dados.senha &&
+      (usuarioInput === dados.email || usuarioInput === dados.usuario)) {
+    alert("Login realizado!");
     fecharLoginCadastro();
     definirLogado(true);
-
   } else {
-    alert("Erro no login!");
+    alert("Usuário ou senha incorretos!");
   }
 }
 
@@ -163,59 +146,73 @@ function definirLogado(estado) {
   botao.innerText = estado ? "Sair" : "Entrar";
 }
 
-//  JANELAS 
-function abrirJanelaEncerrado() {
-  document.getElementById("janela-dia-encerrado").style.display = "flex";
-}
-
-function fecharJanelaEncerrado() {
-  document.getElementById("janela-dia-encerrado").style.display = "none";
-}
-
-function abrirJanelaBloqueado() {
-  document.getElementById("janela-dia-Bloqueado").style.display = "flex";
-}
-
-function fecharJanelaBloqueado() {
-  document.getElementById("janela-dia-Bloqueado").style.display = "none";
-}
-
-function abrirJanelaRegistrarDia() {
-  document.getElementById("janela-registrar-dia").style.display = "block";
-}
-
-function fecharJanelaRegistrarDia() {
-  document.getElementById("janela-registrar-dia").style.display = "none";
-}
-
-//  ESQUECI SENHA 
-function abrirEsqueciSenha() {
-  document.getElementById('janela-esqueci-senha').style.display = 'flex';
-}
-
-function fecharEsqueciSenha() {
-  document.getElementById('janela-esqueci-senha').style.display = 'none';
-}
-
+function abrirJanelaEncerrado() { document.getElementById("janela-dia-encerrado").style.display = "flex"; }
+function fecharJanelaEncerrado() { document.getElementById("janela-dia-encerrado").style.display = "none"; }
+function abrirJanelaBloqueado() { document.getElementById("janela-dia-Bloqueado").style.display = "flex"; }
+function fecharJanelaBloqueado() { document.getElementById("janela-dia-Bloqueado").style.display = "none"; }
+function abrirJanelaRegistrarDia() { document.getElementById("janela-registrar-dia").style.display = "flex"; }
+function fecharJanelaRegistrarDia() { document.getElementById("janela-registrar-dia").style.display = "none"; }
+function abrirEsqueciSenha() { document.getElementById('janela-esqueci-senha').style.display = 'flex'; }
+function fecharEsqueciSenha() { document.getElementById('janela-esqueci-senha').style.display = 'none'; }
 function enviarRecuperacao() {
   const email = document.getElementById('emailRecuperacao').value;
   if(email) {
-    alert('Um link de redefinição foi enviado para: ' + email);
+    alert('Link de redefinição enviado para: ' + email);
     fecharEsqueciSenha();
   } else {
-    alert('Por favor, digite seu email.');
+    alert('Digite seu email!');
   }
 }
 
-//  LOGIN BOTÃO 
+//  BOTÃO LOGIN PRINCIPAL 
 window.addEventListener("DOMContentLoaded", () => {
   const botao = document.getElementById("btnLogin");
-
-  if (botao) {
-    botao.addEventListener("click", () => {
-      const logado = botao.dataset.logged === "true";
-      if (logado) definirLogado(false);
-      else abrirLoginCadastro();
-    });
-  }
+  botao.addEventListener("click", () => {
+    const logado = botao.dataset.logged === "true";
+    if (logado) definirLogado(false);
+    else abrirLoginCadastro();
+  });
 });
+
+window.addEventListener('DOMContentLoaded', atualizarProgramacao);
+
+window.addEventListener('DOMContentLoaded', () => {
+  atualizarProgramacaoBandeiras();
+});
+
+
+function atualizarProgramacao() {
+  const container = document.querySelector('.programacao-container');
+  const programacaoDias = Array.from(document.querySelectorAll('.programacao-dia'));
+
+  const hoje = new Date(agoraFixo.getFullYear(), agoraFixo.getMonth(), agoraFixo.getDate());
+
+  let diaAtualDiv = null;
+
+  programacaoDias.forEach(diaDiv => {
+    const diaNum = parseInt(diaDiv.querySelector('.dia-numero').innerText);
+    const mesStr = diaDiv.querySelector('.mes').innerText;
+    const meses = { 'Jun': 5, 'Jul': 6 };
+    const mesNum = meses[mesStr];
+
+    const dataEvento = new Date(2026, mesNum, diaNum);
+
+    diaDiv.classList.remove('encerrado','disponivel','normal');
+
+    if (dataEvento < hoje) {
+      diaDiv.classList.add('encerrado');
+      diaDiv.querySelectorAll('.artista').forEach(a => a.style.pointerEvents = 'none');
+    } else if (dataEvento.getTime() === hoje.getTime()) {
+      diaDiv.classList.add('disponivel');
+      diaDiv.querySelectorAll('.artista').forEach(a => a.style.pointerEvents = 'auto');
+      diaAtualDiv = diaDiv; 
+    } else {
+      diaDiv.classList.add('normal');
+      diaDiv.querySelectorAll('.artista').forEach(a => a.style.pointerEvents = 'auto');
+    }
+  });
+
+  if (diaAtualDiv) {
+    diaAtualDiv.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}

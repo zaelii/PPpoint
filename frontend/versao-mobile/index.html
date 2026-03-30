@@ -5,32 +5,166 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/frontend/versao-mobile/css/style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
   <title>Point Event Mobile</title>
 </head>
 
 <body>
 
-    <div class="cabeçalho">
+<div class="cabeçalho">
 
-      <nav class="menu">
-        <button id="btnProgramacao" onclick="mostrarPagina('programacao')">Programação</button>
-        <button id="btnPonto" class="active" onclick="mostrarPagina('ponto')">Point</button>
-        <button id="btnRetrospectiva" onclick="mostrarPagina('retrospectiva')">Retrospectiva</button>
-      </nav>
+  <nav class="menu">
+    <button id="btnProgramacao" onclick="mostrarPagina('programacao')">Programação</button>
+    <button id="btnPonto" class="active" onclick="mostrarPagina('ponto')">Point</button>
+    <button id="btnRetrospectiva" onclick="mostrarPagina('retrospectiva')">Retrospectiva</button>
+  </nav>
 
-      <div class="area-login">
-        <button id="btnLogin" class="btnLogin" data-logged="false">Entrar</button>
-      </div>
+  <div class="area-login">
+    <button id="btnLogin" class="btnLogin" data-logged="false">Entrar</button>
+  </div>
 
-    </div>
+</div>
 
 <!-- páginas base -->
 <div class="paginas">
 
-  <!-- página programação -->
-  <div class="pagina" id="programacao">
-    <p>Em breve</p>
+<!-- página programação -->
+<div class="pagina" id="programacao">
+  <div class="programacao-container">
+
+ <!-- Dia 03 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">03</span>
+    <span class="mes">Jun</span>
   </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">19:00</span><span class="nome">Wesley Safadão</span></div>
+    <div class="artista"><span class="hora">20:30</span><span class="nome">Falamansa</span></div>
+    <div class="artista"><span class="hora">22:00</span><span class="nome">Alceu Valença</span></div>
+  </div>
+</div>
+
+<!-- Dia 04 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">04</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">18:30</span><span class="nome">Elba Ramalho</span></div>
+    <div class="artista"><span class="hora">20:00</span><span class="nome">Xand Avião</span></div>
+    <div class="artista"><span class="hora">21:30</span><span class="nome">Banda Aviões do Forró</span></div>
+    <div class="artista"><span class="hora">23:00</span><span class="nome">Marília Mendonça</span></div>
+  </div>
+</div>
+
+<!-- Dia 05 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">05</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">19:00</span><span class="nome">Padre Fábio de Melo</span></div>
+    <div class="artista"><span class="hora">21:00</span><span class="nome">Luan Santana</span></div>
+  </div>
+</div>
+
+<!-- Dia 06 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">06</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">18:00</span><span class="nome">Mastruz com Leite</span></div>
+    <div class="artista"><span class="hora">19:30</span><span class="nome">Banda Magníficos</span></div>
+    <div class="artista"><span class="hora">21:00</span><span class="nome">Solange Almeida</span></div>
+    <div class="artista"><span class="hora">22:30</span><span class="nome">Chico Pessoa</span></div>
+  </div>
+</div>
+
+<!-- Dia 07 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">07</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">18:30</span><span class="nome">Cavaleiros do Forró</span></div>
+    <div class="artista"><span class="hora">20:00</span><span class="nome">Régis e Rapaziada</span></div>
+    <div class="artista"><span class="hora">21:30</span><span class="nome">Flávio José</span></div>
+  </div>
+</div>
+
+<!-- Dia 08 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">08</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">19:00</span><span class="nome">Calcinha Preta</span></div>
+    <div class="artista"><span class="hora">20:30</span><span class="nome">Garota Safada</span></div>
+    <div class="artista"><span class="hora">22:00</span><span class="nome">Zé Cantor</span></div>
+  </div>
+</div>
+
+<!-- Dia 09 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">09</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">18:00</span><span class="nome">Aviões do Forró</span></div>
+    <div class="artista"><span class="hora">19:30</span><span class="nome">Limão com Mel</span></div>
+    <div class="artista"><span class="hora">21:00</span><span class="nome">Forró do Muído</span></div>
+  </div>
+</div>
+
+<!-- Dia 10 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">10</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">18:30</span><span class="nome">Banda Magníficos</span></div>
+    <div class="artista"><span class="hora">20:00</span><span class="nome">Taty Girl</span></div>
+    <div class="artista"><span class="hora">21:30</span><span class="nome">Xand Avião</span></div>
+  </div>
+</div>
+
+<!-- Dia 11 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">11</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">19:00</span><span class="nome">Solange Almeida</span></div>
+    <div class="artista"><span class="hora">20:30</span><span class="nome">Padre Fábio de Melo</span></div>
+    <div class="artista"><span class="hora">22:00</span><span class="nome">Flávio José</span></div>
+  </div>
+</div>
+
+<!-- Dia 12 de Junho -->
+<div class="programacao-dia">
+  <div class="data-dia">
+    <span class="dia-numero">12</span>
+    <span class="mes">Jun</span>
+  </div>
+  <div class="lista-artistas">
+    <div class="artista"><span class="hora">18:30</span><span class="nome">Wesley Safadão</span></div>
+    <div class="artista"><span class="hora">20:00</span><span class="nome">Falamansa</span></div>
+    <div class="artista"><span class="hora">21:30</span><span class="nome">Alceu Valença</span></div>
+  </div>
+</div>
+    
+  </div>
+</div>
 
   <!-- página point (calendário) -->
   <div class="pagina active" id="ponto">
@@ -42,7 +176,7 @@
       <button id="proximoMes" onclick="proximoMes()">&#8250;</button>
 
       <!-- nome do mês -->
-      <div class="cabeçalho">
+      <div class="mes">
         <div class="Mes" id="Mes"></div>
       </div>
 
@@ -71,27 +205,45 @@
 </div>
 
 <!-- Janela Login/Cadastro -->
-<div id="janela-login/cadastro" class="fundo-transparente">
+<div id="janela-login" class="fundo-transparente">
   <div class="janelalogin">
-    <div class="botoes-logar-registrar">
-      <button onclick="mostrarLogin()">Entrar</button>
-      <button onclick="mostrarCadastro()">Criar Conta</button>
-    </div>
-
+    <!-- Login -->
     <div id="loginForm">
       <h2>Login</h2>
-      <input type="text" id="loginUsuario" placeholder="Email ou @instagram">
-      <input type="password" id="loginSenha" placeholder="Senha">
+      <div class="input-com-icone">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="text" id="loginUsuario" placeholder="Email ou @instagram">
+      </div>
+      <div class="input-com-icone">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="loginSenha" placeholder="Senha">
+      </div>
       <button onclick="fazerLogin()">Entrar</button>
       <span class="esqueci-senha" onclick="abrirEsqueciSenha()">Esqueci minha senha</span>
+      <p>Não tem uma conta? <span class="link-cadastro" onclick="mostrarCadastro()">Cadastre-se</span></p>
     </div>
 
+    <!-- Registro -->
     <div id="registerForm" style="display:none;">
       <h2>Crie uma conta</h2>
-      <input type="email" id="cadastroEmail" placeholder="Email">
-      <input type="password" id="cadastroSenha" placeholder="Senha">
-      <input type="text" id="cadastroInstagram" placeholder="@instagram">
+      <div class="input-com-icone">
+        <i class="fa-solid fa-envelope"></i>
+        <input type="email" id="cadastroEmail" placeholder="Email">
+      </div>
+      <div class="input-com-icone">
+        <i class="fa-solid fa-user"></i>
+        <input type="text" id="cadastroUsuario" placeholder="Username">
+      </div>
+      <div class="input-com-icone">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="cadastroSenha" placeholder="Senha">
+      </div>
+      <div class="input-com-icone">
+        <i class="fa-solid fa-lock"></i>
+        <input type="password" id="cadastroSenhaConfirm" placeholder="Confirmar senha">
+      </div>
       <button onclick="registrar()">Criar</button>
+      <p>Já tem uma conta? <span class="link-login" onclick="mostrarLogin()">Entrar</span></p>
     </div>
 
     <span class="fecharlogin" onclick="fecharLoginCadastro()">×</span>
@@ -102,7 +254,10 @@
 <div id="janela-esqueci-senha" class="fundo-transparente">
   <div class="janela-recuperacao">
     <h2>Redefinir Senha</h2>
-    <input type="email" id="emailRecuperacao" placeholder="Digite seu email">
+    <div class="input-com-icone">
+      <i class="fa-solid fa-envelope"></i>
+      <input type="email" id="emailRecuperacao" placeholder="Digite seu email">
+    </div>
     <button onclick="enviarRecuperacao()">Enviar</button>
     <span class="fecharlogin" onclick="fecharEsqueciSenha()">×</span>
   </div>
@@ -137,5 +292,4 @@
 <script src="/frontend/versao-mobile/js/script.js"></script>
 
 </body>
-
 </html>

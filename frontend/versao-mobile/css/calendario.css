@@ -12,13 +12,13 @@
 .cabeçalho {
   font-size: clamp(16px, 4vw, 20px);
   margin-bottom: 10px;
-  color: #2B2525;
   font-family: 'Montserrat', sans-serif;
 }
 
 .Mes {
   font-size: 25px !important; 
   line-height: 1.2;
+  color: #000000;;
 }
 
 
@@ -32,7 +32,6 @@
 }
 
 .flag {
-  background: #d4c22c;
   color: #2B2525;
   width: 100%;
   max-width: 80px;
@@ -48,6 +47,7 @@
 }
 
 .flag.fora {
+  background-color: #ccc;
   opacity: 0.6;
 }
 
@@ -63,6 +63,7 @@
   background: #219332;
 }
 
+
 #voltarMes,
 #proximoMes {
   position: absolute;
@@ -72,7 +73,7 @@
   z-index: 50;
   background: transparent;
   border: none;
-  color: #2B2525;
+  color: #000000;
   font-size: clamp(20px, 6vw, 26px);
   font-weight: 900;
 }

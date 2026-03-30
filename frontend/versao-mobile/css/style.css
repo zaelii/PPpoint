@@ -15,3 +15,8 @@
 /* Responsividade da pagina point */
 @import url("responsividade.css");
 
+/* Fundos das paginas */ 
+@import url("paginas.css");
+
+/* Programação do evento da aba progamação */
+@import url("progamação.css");
