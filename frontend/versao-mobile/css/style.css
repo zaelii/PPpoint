@@ -2,10 +2,15 @@
 @import url("/frontend/versao-mobile/css/base.css");
 
 
-
 /* PAGINA POINT */
-/* Layout e estrutura das páginas */
+/* Layout */
 @import url("/frontend/versao-mobile/css/Pagina-point/layout.css");
+
+/* páginas */
+@import url("/frontend/versao-mobile/css/Pagina-point/janela-registrar-dia.css");
+@import url("/frontend/versao-mobile/css/Pagina-point/janelas-avisos.css");
+@import url("/frontend/versao-mobile/css/Pagina-point/janelas-login.css");
+
 
 /* Calendário */
 @import url("/frontend/versao-mobile/css/Pagina-point/calendario.css");

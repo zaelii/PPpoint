@@ -1,221 +1,3 @@
-
-.janelalogin {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #f5f5f0;
-  width: 90%;
-  max-width: 300px;
-  padding: 30px 5% 100px;
-  border-radius: 15px;
-  text-align: center;
-}
-
-.janela-recuperacao {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: #fff;
-  width: 90%; 
-  max-width: 350px;     
-  padding: 40px 5% 120px; 
-  border-radius: 15px;
-  text-align: center;
-  z-index: 1000;    
-}
-
-.janela-encerrado,
-.janela-bloqueado {
-  z-index: 10000;
-  width: 90%;
-  max-width: 300px;
-  padding: 30px 5% 70px;
-  text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-}
-
-.janela-encerrado {
-  background-color: #859371;
-}
-
-.janela-bloqueado {
-  background-color: #D7462D;
-}
-
-.link-cadastro, .link-login {
-  color: #2b2525;
-  cursor: pointer;
-  font-weight: 600;
-  text-decoration: underline;
-}
-
-.janelalogin p{
-  font-size: 16px;
-  margin-top: 15px; 
-}
-
-.janela-encerrado p,
-.janela-bloqueado p {
-  font-size: 17px;
-  margin-top: 15px; 
-}
-
-.janela-encerrado h3,
-.janela-bloqueado h3 {
-  font-size: 20px;   
-}
-
-
-.fundo-transparente {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
-  z-index: 9998;
-  backdrop-filter: blur(3px); 
-}
-
-.janelalogin input,
-.janela-recuperacao input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 6px;
-  outline: none;
-  border: 1px solid #818181;
-}
-
-.janela-recuperacao input {
-  margin: 15px 0;
-}
-
-.janelalogin button,
-.botoes-logar-registrar button {
-  width: 100%;
-  padding: 8px;
-  margin-top: 5px;
-  border: none;
-  background: #aca8a8;
-  color: #000;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-#loginForm button,
-#registerForm button {
-  width: 100%;
-  padding: 8px;
-  margin-top: 15px;
-  border: none;
-  background: #D7462D;
-  color: #000000;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.janela-recuperacao button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 5px;
-  border: none;
-  background: #d84315;
-  color: #000;
-  border-radius: 6px;
-  cursor: pointer;
-}
-
-.botoes-logar-registrar{
-  display: flex;
-  flex-direction: row;   
-  gap: 10px;
-  width: 100%;
-}
-
-.botoes-logar-registrar button.active {
-  background: #817f7f;
-}
-
-.btnLogin {
-  transition: all 0.2s ease;
-}
-
-.btnLogin:hover {
-  background-color: #d84315;
-}
-
-#loginForm button:active, 
-#registerForm button:active, 
-.janela-recuperacao button:active {
-  background: #eb4527;
-}
-
-.esqueci-senha {
-  display: block;
-  margin-top: 20px;     
-  font-size: 14px;
-  color: #2B2525;
-  cursor: pointer;
-  border-bottom: 1px solid transparent;
-  transition: border-color 0.2s ease;
-}
-
-.esqueci-senha:hover {
-  text-decoration: underline;  
-}
-
-.fecharlogin {
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  padding: 10px 16px;
-  border: none;
-  border-radius: 10px;
-  color: #000000;
-  font-weight: 700;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.input-com-icone {
-  position: relative;
-  width: 100%;
-  margin: 10px 0;
-}
-
-.input-com-icone i {
-  position: absolute;
-  top: 50%;
-  left: 10px;
-  transform: translateY(-50%);
-  color: #818181;
-  font-size: 16px;
-}
-
-.input-com-icone input {
-  width: 100%;
-  padding: 10px 10px 10px 35px; 
-  border-radius: 6px;
-  border: 1px solid #818181;
-  outline: none;
-}
-
-#loginForm h2, 
-#registerForm h2, 
-.janela-recuperacao h2 {
-  margin: 15px;
-  white-space: nowrap;
-}
-
 #janela-registrar-dia {
   display: none; 
   position: fixed;
@@ -225,22 +7,21 @@
   height: 100%;
   background: transparent; 
   z-index: 10000;
-  display: none; 
   justify-content: center;
   align-items: center;
   scroll-behavior: smooth;
   font-family: 'Arial', sans-serif;
 }
 
-
 #janela-registrar-dia .modal-box {
-  background: #f5f5f0;
+  position: relative; 
+  background: #dbdb00;
   width: 92%;
   max-width: 400px;
   max-height: 88vh; 
   overflow-y: auto; 
   padding: 20px;
-  border-radius: 20px;
+  border-radius: 10px;
   text-align: center;
   box-shadow: 0 15px 35px rgba(0,0,0,0.4);
   -webkit-overflow-scrolling: touch;
@@ -249,6 +30,7 @@
 #janela-registrar-dia::-webkit-scrollbar {
   width: 6px;
 }
+
 #janela-registrar-dia::-webkit-scrollbar-thumb {
   background-color: rgba(215,70,45,0.6);
   border-radius: 3px;
@@ -274,7 +56,6 @@
   margin-bottom: 5px;
 }
 
-
 #inputAmigos,
 #listaBebidas input {
   width: 100%;
@@ -290,8 +71,7 @@
 
 #areaCamera {
   display: none; 
-  background: #fff;
-  border: 2px dashed #D7462D;
+  background: transparent;
   padding: 15px;
   border-radius: 18px;
   margin-bottom: 20px;
@@ -299,8 +79,14 @@
 }
 
 #areaCamera h3 {
-  font-size: 16px;
-  color: #2b2525;
+  font-size: 22px;
+  color: #0a0a0a;
+  margin-bottom: 5px;
+}
+
+#areaCamera p {
+  font-size: 14px;
+  color: #0a0a0a;
   margin-bottom: 5px;
 }
 
@@ -349,6 +135,18 @@
   margin-top: 5px;
 }
 
+.notaShow-container button.meia {
+  position: relative;
+}
+
+.notaShow-container button.meia::before {
+  content: "★";
+  position: absolute;
+  width: 50%;
+  overflow: hidden;
+  color: #cc3434;
+}
+
 .notaShow-container button {
   background: none;
   border: none;
@@ -360,7 +158,6 @@
 .notaShow-container button.active {
   color: #cc3434;
 }
-
 
 #listaBebidas {
   display: flex;
@@ -391,7 +188,6 @@
   color: #333;
 }
 
-
 .controles-qtd {
   display: flex;
   align-items: center;
@@ -400,7 +196,6 @@
   padding: 4px 8px;
   border-radius: 20px;
 }
-
 
 .controles-qtd button {
   width: 26px;
@@ -418,9 +213,8 @@
   padding: 0;
 }
 
-/* O NÚMERO (INPUT) PEQUENO */
 .bebidaQtd {
-  width: 25px !important; /* Tamanho fixo bem pequeno */
+  width: 25px !important; 
   border: none !important;
   background: transparent !important;
   text-align: center;
@@ -432,13 +226,11 @@
   outline: none;
 }
 
-
 .bebidaQtd::-webkit-inner-spin-button,
 .bebidaQtd::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
-
 
 #janela-registrar-dia .btn-confirmar {
   width: 100%;
@@ -456,20 +248,17 @@
 }
 
 
-#janela-registrar-dia .fechar {
-  position: relative;
-  display: block;
-  width: 100%;
-  margin-top: 15px;
-  padding: 12px;
-  border: none;
-  border-radius: 12px;
-  color: #000;
-  font-weight: 700;
-  cursor: pointer;
-  font-size: 16px;
-}
 
+#janela-registrar-dia .fechar {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  color: #000000;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+}
 
 #listaShows {
   display: grid;
@@ -494,14 +283,12 @@
   box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
-
 .nome-show {
   font-size: 16px;
   font-weight: 700;
   color: #444;
   margin-left: 10px;
 }
-
 
 .icone-check {
   display: flex;
@@ -544,7 +331,6 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-
 .header-categoria {
   display: flex;
   justify-content: space-between;
@@ -561,7 +347,6 @@
   transition: transform 0.3s ease; 
   font-size: 0.8rem;
 }
-
 
 .categoria-bebida-wrapper.aberto .seta-indicadora {
   transform: rotate(180deg);

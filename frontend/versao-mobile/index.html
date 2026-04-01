@@ -246,7 +246,7 @@
       <p>Já tem uma conta? <span class="link-login" onclick="mostrarLogin()">Entrar</span></p>
     </div>
 
-    <span class="fecharlogin" onclick="fecharLoginCadastro()">×</span>
+    <span class="fechar" onclick="fecharLoginCadastro()">×</span>
   </div>
 </div>
 
@@ -254,19 +254,23 @@
 <div id="janela-esqueci-senha" class="fundo-transparente">
   <div class="janela-recuperacao">
     <h2>Redefinir Senha</h2>
+    
     <div class="input-com-icone">
       <i class="fa-solid fa-envelope"></i>
       <input type="email" id="emailRecuperacao" placeholder="Digite seu email">
     </div>
+    
     <button onclick="enviarRecuperacao()">Enviar</button>
-    <span class="fecharlogin" onclick="fecharEsqueciSenha()">×</span>
+    
+    <span class="fechar" onclick="fecharEsqueciSenha()">×</span>
   </div>
 </div>
 
 <!-- janela dia encerrado -->
 <div id="janela-dia-encerrado" class="fundo-transparente">
   <div class="janela-encerrado">
-    <span class="fechar" onclick="fecharJanelaEncerrado()">×</span>
+    <span class="fechar
+    " onclick="fecharJanelaEncerrado()">×</span>
     <h3>Tempo de registro encerrado</h3>
     <p>O período de registro só fica disponível até 24h após o dia que deseja registrar.</p>
   </div>
@@ -275,7 +279,8 @@
 <!-- janela dia bloqueado -->
 <div id="janela-dia-Bloqueado" class="fundo-transparente">
   <div class="janela-bloqueado">
-    <span class="fechar" onclick="fecharJanelaBloqueado()">×</span>
+    <span class="fechar
+    " onclick="fecharJanelaBloqueado()">×</span>
     <h3>Disponível em breve</h3>
     <p>Calma lá! Você só pode registrar no dia seguinte ao evento.</p>
   </div>
@@ -288,8 +293,8 @@
     <h2 id="tituloRegistro">Registrar dia</h2>
 
     <div id="areaCamera">
-      <h3>Tire uma foto dentro do PP</h3>
-      <p class="aviso-foto">Capriche! Ela vai aparecer na sua retrospectiva</p>
+      <h3>Tire sua foto dentro do PP</h3>
+      <p class="aviso-foto">Capriche vai aparecer na sua retrospectiva</p>
       
       <div id="videoContainer" style="display:none; margin-bottom: 10px;">
         <video id="videoPreview" autoplay playsinline style="width: 100%; border-radius: 12px; background: #000;"></video>
@@ -306,17 +311,13 @@
       <div id="notasShows"></div>
     </div>
 
-    <div class="campo">
-      <label> Melhor show da noite</label>
-      <div id="listaShows" class="lista-opcoes"></div>
-    </div>
+
 
 
     <div class="campo">
-      <label for="inputAmigos">Com quem você estava? (@ do Insta)</label>
+      <label for="inputAmigos">Com quem você foi? (@ do Insta)</label>
       <input type="text" id="inputAmigos" list="sugestoesAmigos" placeholder="@usuario" autocomplete="off">
-      <datalist id="sugestoesAmigos">
-        </datalist>
+      <datalist id="sugestoesAmigos"> </datalist>
     </div>
 
     <div class="campo">
@@ -325,7 +326,8 @@
     </div>
 
     <button onclick="enviarRegistro()" class="btn-confirmar">Registrar dia</button>
-    <button onclick="fecharJanelaRegistrarDia()" class="fechar">x</button>
+    <button onclick="fecharJanelaRegistrarDia()" class="fechar"> x </button>
+
   </div>
 </div>
 

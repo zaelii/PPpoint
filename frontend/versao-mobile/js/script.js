@@ -62,7 +62,6 @@ function renderizarCalendario() {
     containerDias.innerHTML += "<div></div>";
   }
 
-  // Criação dos dias (bandeirinhas)
   for (let dia = 1; dia <= totalDias; dia++) {
     let flag = document.createElement("div");
     flag.classList.add("flag");
@@ -202,11 +201,10 @@ function getProgramacaoPorDia(dia, mes) {
   return programacao[`${mes}-${dia}`] || ["Show Geral"];
 }
 
-// ESTRUTURA COM SUBCLASSES (SABORES)
 function getEstruturaBebidas() {
   return [
-    { nome: "Beats", sabores: ["Azul", "Vermelha", "Verde", "Roxa", "Beats 1L"] },
-    { nome: "Matuta", sabores: ["Mel e Limão", "Canela", "Cristal", "coco"] },
+    { nome: "Beats", sabores: ["Azul", "Vermelha", "Verde",, "Beats 1L"] },
+    { nome: "Matuta", sabores: ["Mel e Limão", "Canela", "Cristal", "Coco"] },
     { nome: "Cerveja", sabores: ["Brahma", "Heineken", "Skol"] },
     { nome: "Outros", sabores: ["Água", "Refrigerante"] }
   ];
@@ -215,45 +213,60 @@ function getEstruturaBebidas() {
 function carregarDadosFormulario() {
   let shows = getProgramacaoPorDia(diaSelecionado, mesAtual);
   let estrutura = getEstruturaBebidas();
-  const containerShows = document.getElementById("listaShows");
   const containerNotas = document.getElementById("notasShows");
   const containerBebidas = document.getElementById("listaBebidas");
 
-  containerShows.innerHTML = ""; containerNotas.innerHTML = ""; containerBebidas.innerHTML = "";
+  containerNotas.innerHTML = "";
+  containerBebidas.innerHTML = "";
 
-  // --- RENDER SHOWS (SISTEMA DE /FAVORITO) ---
-  shows.forEach((show, idx) => {
-    const card = document.createElement("div");
-    card.classList.add("card-selecao");
-    card.innerHTML = `
-      <input type="radio" name="showFavorito" id="show-${idx}" value="${show}" style="display:none;">
-      <label for="show-${idx}" class="conteudo-card">
-        <span class="icone-check">✔</span>
-        <span class="nome-show">${show}</span>
-      </label>
-    `;
-    card.onclick = () => {
-      document.querySelectorAll(".card-selecao").forEach(c => c.classList.remove("selecionado"));
-      card.classList.add("selecionado");
-    };
-    containerShows.appendChild(card);
-  });
-
-  // --- RENDER NOTAS (SISTEMA DE ESTRELAS ★) ---
+  // --- RENDER NOTAS (5 ESTRELAS COM MEIA, SÓ UM 5 POR NOITE) ---
+  let notaMaximaDada = false; // controla se algum show já tem nota 5
   shows.forEach(show => {
     const div = document.createElement("div");
     div.classList.add("item");
     div.innerHTML = `<p style="margin-top:10px; font-weight:bold;">${show}</p><div class="notaShow-container"></div>`;
     const cont = div.querySelector(".notaShow-container");
+
     for (let i = 1; i <= 5; i++) {
-      const b = document.createElement("button");
-      b.innerHTML = "★";
-      b.type = "button";
-      b.onclick = () => {
-        cont.querySelectorAll("button").forEach((btn, j) => btn.classList.toggle("active", j < i));
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.innerHTML = "★";
+      btn.style.position = "relative";
+
+      btn.onclick = (e) => {
+        const clickX = e.offsetX;
+        const width = btn.offsetWidth;
+        let nota = i; // estrela inteira
+
+        if (clickX < width / 2) nota = i - 0.5;
+
+        if (nota === 5 && notaMaximaDada) {
+          alert("Você só pode dar nota 5 para um show da noite!");
+          nota = 4.5; // força menos de 5
+        }
+
+        // atualiza visual
+        cont.querySelectorAll("button").forEach((b, j) => {
+          b.classList.remove("active");
+          b.classList.remove("meia");
+
+          if (j + 1 < nota) b.classList.add("active");
+          else if (j + 1 === Math.ceil(nota) && nota % 1 !== 0) b.classList.add("meia");
+          else if (j + 1 <= nota) b.classList.add("active");
+        });
+
+        div.dataset.nota = nota;
+
+        // atualiza controle do 5
+        if (nota === 5) notaMaximaDada = true;
+        else if (nota < 5) {
+          notaMaximaDada = Array.from(containerNotas.querySelectorAll('.item')).some(d => parseFloat(d.dataset.nota) === 5);
+        }
       };
-      cont.appendChild(b);
+
+      cont.appendChild(btn);
     }
+
     containerNotas.appendChild(div);
   });
 
@@ -306,10 +319,11 @@ function abrirJanelaRegistrarDia() {
     const registros = JSON.parse(localStorage.getItem("registros_" + usuario.usuario)) || [];
     areaCam.style.display = (registros.length === 0) ? "block" : "none";
   }
-  carregarDadosFormulario(); carregarSugestoesAmigos();
+  carregarDadosFormulario(); 
+  carregarSugestoesAmigos();
   let mesReal = mesAtual === 0 ? 5 : 6;
   let d = new Date(ano, mesReal, diaSelecionado);
-  document.getElementById("tituloRegistro").innerText = `Registrar dia ${String(d.getDate()).padStart(2, '0')}/${String(d.getMonth() + 1).padStart(2, '0')}`;
+  document.getElementById("tituloRegistro").innerText = `Registrar dia ${String(d.getDate()).padStart(2,'0')}/${String(d.getMonth()+1).padStart(2,'0')}`;
 }
 
 function fecharJanelaRegistrarDia() {
@@ -347,7 +361,50 @@ function enviarRegistro() {
   fecharJanelaRegistrarDia(); renderizarCalendario();
 }
 
-// ====== PROGRAMAÇÃO ====== //
+function fecharEsqueciSenha() {
+  // 1. Fecha o fundo pelo ID
+  const container = document.getElementById("janela-esqueci-senha");
+  if (container) {
+    container.style.setProperty("display", "none", "important");
+  }
+
+  // 2. Fecha a janela branca pela CLASSE (garante que suma mesmo se estiver fora do container)
+  const janelas = document.querySelectorAll(".janela-recuperacao");
+  janelas.forEach(janela => {
+    janela.style.setProperty("display", "none", "important");
+  });
+}
+
+function abrirEsqueciSenha() {
+  const container = document.getElementById("janela-esqueci-senha");
+  const janela = document.querySelector(".janela-recuperacao");
+
+  if (container) {
+    container.style.setProperty("display", "flex", "important");
+  }
+  if (janela) {
+    janela.style.setProperty("display", "block", "important");
+  }
+}
+// Fecha a janela ao clicar no fundo transparente
+const fundoRecuperacao = document.getElementById("janela-esqueci-senha");
+if(fundoRecuperacao){
+  fundoRecuperacao.addEventListener("click", function(e){
+    if(e.target === this){ // só fecha se clicou no fundo, não na janela interna
+      fecharEsqueciSenha();
+    }
+  });
+}
+
+
+
+function enviarRecuperacao() {
+  const email = document.getElementById("emailRecuperacao").value;
+  if (!email) { alert("Digite um email válido!"); return; }
+  alert(`Instruções de recuperação enviadas para ${email} 📧`);
+  fecharEsqueciSenha();
+}
+
 function atualizarProgramacao() {
   const programacaoDias = Array.from(document.querySelectorAll('.programacao-dia'));
   if (programacaoDias.length === 0) return;
@@ -370,11 +427,16 @@ window.addEventListener("DOMContentLoaded", () => {
   renderizarCalendario();
   atualizarProgramacao();
   
-  document.querySelectorAll(".fechar").forEach(b => b.onclick = () => {
-    fecharJanelaRegistrarDia(); fecharLoginCadastro();
-    fecharJanelaEncerrado(); fecharJanelaBloqueado();
-  });
-  
+// Substitua o bloco antigo por este no final do seu JS
+document.querySelectorAll(".fechar").forEach(b => {
+  b.onclick = () => {
+    fecharJanelaRegistrarDia(); 
+    fecharLoginCadastro();
+    fecharJanelaEncerrado(); 
+    fecharJanelaBloqueado();
+    fecharEsqueciSenha(); // ADICIONE ESTA LINHA AQUI
+  };
+});
   const btnL = document.getElementById("btnLogin");
   if(btnL) btnL.onclick = () => { if (btnL.dataset.logged === "true") definirLogado(false); else abrirLoginCadastro(); };
 });

@@ -60,11 +60,9 @@
   transition: all 0.2s ease;
 }
 
-.menu button:hover,
 .menu button.active {
   background-color: #D7462D;
 }
-
 
 .pagina {
   display: none;
