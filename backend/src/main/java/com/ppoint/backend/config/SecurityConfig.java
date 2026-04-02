@@ -32,7 +32,7 @@ public class SecurityConfig {
                         .requestMatchers(
                                 "/auth/login",
                                 "/auth/register",
-                                "/auth/google",
+                                "/auth/login/google",
                                 "/",
                                 "/static/**",
                                 "/**.html",
