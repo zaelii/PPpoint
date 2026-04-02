@@ -1,53 +1,29 @@
 package com.ppoint.backend.domain;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
 import java.util.UUID;
 
+@Getter
+@Setter
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String name;
+    private String instagramUser;
 
     @Column(unique = true)
     private String email;
     private String password;
     private String role;
+    private String provider;
+    private String googleId;
+    private String picture;
 
-    // Getters:
-    public String getEmail() {
-        return email;
-    }
-    public String getName() {
-        return name;
-    }
-    public String getRole() {
-        return role;
-    }
-    public String getPassword() {
-        return password;
-    }
-    public UUID getId() {
-        return id;
-    }
-
-    // Setters:
-    public void setId(UUID id) {
-        this.id = id;
-    }
-    public void setName(String name) {
-        this.name = name;
-    }
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    public void setRole(String role) {
-        this.role = role;
-    }
 }
