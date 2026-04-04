@@ -123,32 +123,73 @@ function abrirLoginCadastro() { document.getElementById("janela-login").style.di
 function fecharLoginCadastro() { document.getElementById("janela-login").style.display = "none"; }
 function mostrarLogin() { document.getElementById("loginForm").style.display = "block"; document.getElementById("registerForm").style.display = "none"; }
 function mostrarCadastro() { document.getElementById("loginForm").style.display = "none"; document.getElementById("registerForm").style.display = "block"; }
-
 function registrar() {
   const email = document.getElementById("cadastroEmail").value;
   const senha = document.getElementById("cadastroSenha").value;
   const usuario = document.getElementById("cadastroUsuario").value;
   const senhaConf = document.getElementById("cadastroSenhaConfirm").value;
 
-  if (!email || !senha || !usuario || !senhaConf) { alert("Preencha todos os campos!"); return; }
-  if(senha !== senhaConf){ alert("As senhas não conferem!"); return; }
+  fetch("http://localhost:8080/auth/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      username: usuario,
+      email: email,
+      password: senha,
+      confirmPassword: senhaConf
+    })
+  })
+  .then(async res => {
+    const texto = await res.text();
 
-  localStorage.setItem("usuario", JSON.stringify({ email, senha, usuario }));
-  alert("Conta criada com sucesso!");
-  mostrarLogin();
+    if (!res.ok) {
+      throw new Error(texto);
+    }
+
+    return texto;
+  })
+  .then(msg => {
+    alert(msg);
+    mostrarLogin();
+  })
+  .catch(err => {
+    console.error("ERRO REAL:", err.message);
+    alert(err.message);
+  });
 }
 
 function fazerLogin() {
-  const usuarioInput = document.getElementById("loginUsuario").value;
-  const senhaInput = document.getElementById("loginSenha").value;
-  const dados = JSON.parse(localStorage.getItem("usuario"));
+  
+  const email = document.getElementById("loginUsuario").value;
+  const senha = document.getElementById("loginSenha").value;
 
-  if (dados && senhaInput === dados.senha && (usuarioInput === dados.email || usuarioInput === dados.usuario)) {
-    fecharLoginCadastro();
-    definirLogado(true);
-    localStorage.setItem("usuarioLogado", JSON.stringify(dados));
-    renderizarCalendario();
-  } else { alert("Usuário ou senha incorretos!"); }
+  fetch("http://localhost:8080/auth/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      email: email,
+      password: senha
+    })
+  })
+  .then(res => res.json())
+  .then(data => {
+  localStorage.setItem("token", data.token);
+
+  // 👇 ESSA LINHA RESOLVE TUDO
+  localStorage.setItem("usuarioLogado", JSON.stringify({
+    email: email,
+    usuario: email
+  }));
+
+  definirLogado(true);
+  fecharLoginCadastro();
+
+  alert("Login feito com sucesso!");
+})
 }
 
 function definirLogado(estado) {
