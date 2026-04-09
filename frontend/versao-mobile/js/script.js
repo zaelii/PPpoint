@@ -8,13 +8,14 @@ const API_URL = DEV_ORIGINS.includes(window.location.hostname)
     ? "http://localhost:8080"
     : "https://backenddeploy.com";
 
+const API_URL = ["localhost", "127.0.0.1"].includes(window.location.hostname) ? "http://localhost:8080" : "https://backenddeploy.com";
 const nomesMeses = ["Jun", "Jul"];
 let mesAtual = 0; // 0 para Junho, 1 para Julho
 const ano = 2026;
 const agoraFixo = new Date(2026, 5, 9, 12, 0, 0); // Simulação de data atual
 let diaSelecionado = null;
 let streamRecurso = null;
-let fotoCapturada = null;
+let fotoCapturada = null;  
 
 function usuarioLogado() {
   const btn = document.getElementById("btnLogin");
