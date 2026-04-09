@@ -17,14 +17,14 @@ import java.util.Collections;
 import java.io.IOException;
 
 @Component
-public class JwtFilter extends OncePerRequestFilter {
+public class JwtFilterConfig extends OncePerRequestFilter {
 
-    private static final Logger logger = LoggerFactory.getLogger(JwtFilter.class);
+    private static final Logger logger = LoggerFactory.getLogger(JwtFilterConfig.class);
 
     private final JwtService jwtService;
     private final UserRepository userRepository;
 
-    public JwtFilter(JwtService jwtService, UserRepository userRepository) {
+    public JwtFilterConfig(JwtService jwtService, UserRepository userRepository) {
         this.jwtService = jwtService;
         this.userRepository = userRepository;
     }
