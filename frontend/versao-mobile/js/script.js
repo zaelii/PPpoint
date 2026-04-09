@@ -5,6 +5,7 @@ const DEV_ORIGINS = [
 ];
 
 const API_URL = ["localhost", "127.0.0.1"].includes(window.location.hostname) ? "http://localhost:8080" : "https://backenddeploy.com";
+
 const nomesMeses = ["Jun", "Jul"];
 let mesAtual = 0; // 0 para Junho, 1 para Julho
 const ano = 2026;
