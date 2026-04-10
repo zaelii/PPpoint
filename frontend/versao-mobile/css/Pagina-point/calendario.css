@@ -1,3 +1,4 @@
+
 .calendario {
   margin: 80px auto 20px auto;
   padding: 15px 5%;
@@ -26,11 +27,13 @@
 }
 
 .dias{
-color: #ffffff;
+  letter-spacing: 1px;
+  color: #ffffff;
 }
 
 .semanas,
 .dias {
+
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 8px;

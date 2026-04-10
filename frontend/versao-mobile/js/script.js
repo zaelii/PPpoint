@@ -9,7 +9,7 @@ const API_URL = ["localhost", "127.0.0.1"].includes(window.location.hostname) ? 
 const nomesMeses = ["Jun", "Jul"];
 let mesAtual = 0; // 0 para Junho, 1 para Julho
 const ano = 2026;
-const agoraFixo = new Date(2026, 5, 9, 12, 0, 0); // Simulação de data atual
+const agoraFixo = new Date(2026, 5, 8, 12, 0, 0); // Simulação de data atual
 let diaSelecionado = null;
 let streamRecurso = null;
 let fotoCapturada = null;  
@@ -622,10 +622,10 @@ const programacao = [
   { dia: "04 Jun", shows: ["18:30 - Elba Ramalho", "20:00 - Xand Avião", "21:30 - Banda Aviões", "23:00 - Marília Mendonça"] },
   { dia: "05 Jun", shows: ["19:00 - Padre Fábio", "21:00 - Luan Santana"] },
   { dia: "06 Jun", shows: ["18:00 - Mastruz", "19:30 - Magníficos", "21:00 - Solange", "22:30 - Chico Pessoa"] },
-  { dia: "07 Jun", shows: ["18:30 - Cavaleiros", "20:00 - Régis", "21:30 - Flávio José"] },
+  { dia: "07 Jun", shows: ["18:30 - Cavaleiros do Forró", "20:00 - Régis", "21:30 - Flávio José"] },
   { dia: "08 Jun", shows: ["19:00 - Calcinha Preta", "20:30 - Garota Safada", "22:00 - Zé Cantor"] },
   { dia: "09 Jun", shows: ["18:00 - Aviões", "19:30 - Limão com Mel", "21:00 - Forró do Muído"] },
-  { dia: "10 Jun", shows: ["18:30 - Magníficos", "20:00 - Taty Girl", "21:30 - Xand Avião"] }
+  { dia: "10 Jun", shows: ["18:30 - Magníficos", "20:00 - Taty Girl", "21:30 - Domiguinhos"] }
 ];
 
 let indiceAtual = 0;

@@ -1,4 +1,8 @@
-/* CONTAINER PRINCIPAL */
+@font-face {
+  font-family: 'Antone';
+  src: url('/frontend/versao-mobile/css/fonts/Antone\ DEMO.ttf') format('truetype');
+}
+
 .carrossel-programacao {
   position: relative;
   display: flex;
@@ -7,11 +11,10 @@
   width: 100%;
   max-width: 100%;
   margin: 15px auto;
-  padding: 0 15px; 
+  padding: 0 10px; 
   box-sizing: border-box;
 }
 
-/* LISTA VERTICAL DOS DIAS */
 .grid-programacao {
   display: flex;
   flex-direction: column; 
@@ -21,45 +24,53 @@
   align-items: center; 
 }
 
-/* CARD DE CADA DIA */
 .card-dia {
   padding: 15px 12px;
   border-radius: 12px;
   width: 100%; 
-  display: flex;              
+  display: flex;               
   align-items: center;
   justify-content: center; 
   gap: 15px;
   box-sizing: border-box;
 }
 
-/* DATA NA ESQUERDA */
 .data-dia {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: center;      
   justify-content: center;
-  min-width: 60px; 
+  text-align: center;
+  min-width: 80px; 
+  flex-shrink: 0;
+  gap: 7px;
 }
 
 .data-dia .semana {
   color: #18bb13;
   font-size: 18px; 
+  letter-spacing: 3px;
+  display: block;
+  width: 100%;
 }
 
 .data-dia .dia {
+  font-family: 'Antone', Arial, sans-serif;
   color: #b5b807;
-  font-size: 43px; 
-  font-weight: bold;
+  font-size: 38px; 
   line-height: 1;
+  display: block;
+  width: 100%;
 }
 
 .data-dia .mes {
   color: white;
   font-size: 18px;
+  letter-spacing: 3px;
+  display: block;
+  width: 100%;
 }
 
-/* CONTEÚDO À DIREITA (SHOWS) */
 .conteudo-dia {
   display: flex;
   flex-direction: column;
@@ -67,7 +78,6 @@
   max-width: 70%; 
 }
 
-/* LINHA DE CADA SHOW */
 .show {
   display: flex;
   flex-direction: row;
@@ -78,7 +88,6 @@
   width: 100%;
 }
 
-/* HORÁRIO  */
 .hora {
   background-color: #ffd24d;
   font-weight: bold;
@@ -90,7 +99,6 @@
   text-align: center;
 }
 
-/* NOME DO ARTISTA */
 .artista {
   flex: 1;
   font-weight: bold;
@@ -99,10 +107,9 @@
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: ellipsis;
+  text-overflow: unset;
 }
 
-/* BOTÕES LATERAIS  */
 .nav {
   position: absolute;
   top: 50%;
@@ -122,12 +129,8 @@
 .nav:nth-child(1) { left: 0; }
 .nav:nth-child(3) { right: 0; }
 
-/* DIAS PASSADOS */
 .card-dia.passado {
   opacity: 0.5;
   filter: grayscale(60%);
 }
 
-.card-dia.hoje {
-  background-color: #1136d82a;
-}

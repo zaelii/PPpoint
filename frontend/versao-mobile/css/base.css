@@ -13,11 +13,11 @@ body {
   background-position: center;
   min-height: 100vh;
   overflow-x: hidden;
-  background-image: url('/frontend/versao-mobile/imagens/casaeluzes.png');
+  background-image: url('/frontend/versao-mobile/css/imagens/casaeluzes.png');
 }
 
 body.fundo-ponto {
-  background-image: url('/frontend/versao-mobile/imagens/casaeluzes.png');
+  background-image: url('/frontend/versao-mobile/css/imagens/casaeluzes.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -35,7 +35,7 @@ body.fundo-programacao {
 }
 
 body.fundo-retro {
-  background-image: url('/frontend/versao-mobile/imagens/casaeluzes.png');
+  background-image: url('/frontend/versao-mobile/css/imagens/casaeluzes.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
