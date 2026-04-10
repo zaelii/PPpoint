@@ -1,136 +1,182 @@
+/* ===== FONTE ===== */
 @font-face {
   font-family: 'Antone';
-  src: url('/frontend/versao-mobile/css/fonts/Antone\ DEMO.ttf') format('truetype');
+  src: url('/frontend/versao-mobile/css/fonts/Antone DEMO.ttf') format('truetype');
 }
 
+/* ===== CARROSSEL ===== */
 .carrossel-programacao {
   position: relative;
   display: flex;
-  align-items: center;
-  justify-content: center; 
+  align-items: flex-start;
+  justify-content: center;
   width: 100%;
-  max-width: 100%;
-  margin: 15px auto;
-  padding: 0 10px; 
+  padding: 16px 36px;
   box-sizing: border-box;
+  min-height: calc(100vh - var(--header-h) - var(--nav-h));
 }
 
 .grid-programacao {
   display: flex;
-  flex-direction: column; 
-  gap: 15px; 
+  flex-direction: column;
+  gap: 12px;
   width: 100%;
-  max-width: 400px; 
-  align-items: center; 
+  max-width: 420px;
+  padding-top: 4px;
 }
 
+/* ===== CARD DO DIA ===== */
 .card-dia {
-  padding: 15px 12px;
-  border-radius: 12px;
-  width: 100%; 
-  display: flex;               
-  align-items: center;
-  justify-content: center; 
-  gap: 15px;
-  box-sizing: border-box;
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: rgba(8, 3, 0, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.2s ease;
 }
 
+.card-dia:active {
+  transform: scale(0.98);
+}
+
+/* Card do dia de hoje — destaque */
+.card-dia.hoje {
+  border-color: rgba(245, 197, 24, 0.45);
+  box-shadow: 0 0 18px rgba(245, 197, 24, 0.18);
+}
+
+/* Card passado — apagado */
+.card-dia.passado {
+  opacity: 0.45;
+  filter: grayscale(55%);
+}
+
+/* ===== DATA (coluna esquerda) ===== */
 .data-dia {
   display: flex;
   flex-direction: column;
-  align-items: center;      
+  align-items: center;
   justify-content: center;
-  text-align: center;
-  min-width: 80px; 
+  padding: 16px 14px;
+  min-width: 76px;
+  background: rgba(0, 0, 0, 0.35);
+  border-right: 1px solid rgba(255, 255, 255, 0.07);
+  gap: 2px;
   flex-shrink: 0;
-  gap: 7px;
 }
 
 .data-dia .semana {
-  color: #18bb13;
-  font-size: 18px; 
-  letter-spacing: 3px;
+  color: #4ade80;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   display: block;
-  width: 100%;
+}
+
+/* Destaque no dia de hoje */
+.card-dia.hoje .data-dia .semana {
+  color: var(--amarelo);
 }
 
 .data-dia .dia {
   font-family: 'Antone', Arial, sans-serif;
-  color: #b5b807;
-  font-size: 38px; 
+  color: #f0e060;
+  font-size: 40px;
   line-height: 1;
   display: block;
-  width: 100%;
+}
+
+.card-dia.hoje .data-dia .dia {
+  color: var(--amarelo);
+  text-shadow: 0 0 16px rgba(245, 197, 24, 0.5);
 }
 
 .data-dia .mes {
-  color: white;
-  font-size: 18px;
-  letter-spacing: 3px;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   display: block;
-  width: 100%;
 }
 
+/* ===== SHOWS (coluna direita) ===== */
 .conteudo-dia {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   flex: 1;
-  max-width: 70%; 
+  padding: 14px 14px 14px 12px;
+  gap: 6px;
 }
 
 .show {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: flex-start;
   gap: 8px;
-  margin: 3px 0;
-  width: 100%;
 }
 
 .hora {
-  background-color: #ffd24d;
-  font-weight: bold;
-  color: #000000;
-  font-size: 15px; 
-  padding: 5px 12px; 
+  background: var(--amarelo);
+  color: #000;
+  font-weight: 800;
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 4px;
   white-space: nowrap;
-  min-width: 50px;
-  text-align: center;
+  flex-shrink: 0;
+  letter-spacing: 0.3px;
+}
+
+.card-dia.passado .hora {
+  background: #888;
 }
 
 .artista {
-  flex: 1;
-  font-weight: bold;
-  font-size: 18px; 
-  color: #ffffff;
+  font-weight: 700;
+  font-size: 15px;
+  color: #fff;
   text-align: left;
   white-space: nowrap;
   overflow: hidden;
-  text-overflow: unset;
+  text-overflow: ellipsis;
+  flex: 1;
 }
 
+/* ===== SETAS DE NAVEGAÇÃO ===== */
 .nav {
   position: absolute;
   top: 50%;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 26px;
-  padding: 10px;
+  transform: translateY(-50%);
+  background: rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 28px;
+  width: 32px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background 0.2s ease, color 0.2s ease;
   z-index: 10;
+  line-height: 1;
 }
 
-.nav:active {
-  transform: scale(0.9);
+.nav:hover {
+  background: rgba(215, 70, 45, 0.35);
+  color: #fff;
 }
 
-.nav:nth-child(1) { left: 0; }
-.nav:nth-child(3) { right: 0; }
+.nav:active { transform: translateY(-50%) scale(0.92); }
 
-.card-dia.passado {
-  opacity: 0.5;
-  filter: grayscale(60%);
-}
-
+.nav:nth-child(1) { left: 4px; }
+.nav:nth-child(3) { right: 4px; }

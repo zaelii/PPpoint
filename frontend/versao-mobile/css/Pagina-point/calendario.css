@@ -1,108 +1,147 @@
-
+/* ===== CALENDÁRIO ===== */
 .calendario {
-  margin: 80px auto 20px auto;
-  padding: 15px 5%;
-  max-width: 90%;
-  margin-top: 30px;
-  width: 350px;
-  background-color: transparent;
-  border-radius: 10px;
-  position: relative;
+  padding: 22px 6% 30px;
+  max-width: 400px;
+  margin: 0 auto;
 }
 
-.cabeçalho {
-  font-size: clamp(16px, 4vw, 20px);
-  margin-bottom: 10px;
-  font-family: 'Montserrat', sans-serif;
+/* Cabeçalho do mês (setas + nome) */
+.cal-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 18px;
 }
 
+.cal-nav button {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 36px;
+  font-weight: 900;
+  cursor: pointer;
+  line-height: 1;
+  padding: 0 6px;
+  transition: color 0.2s ease;
+  user-select: none;
+}
+
+.cal-nav button:hover {
+  color: var(--amarelo);
+}
+
+/* Nome do mês */
 .Mes {
-  font-size: 25px !important; 
-  line-height: 1.2;
-  color: #ffffff;;
+  font-family: 'Antone', Arial, sans-serif;
+  font-size: 46px;
+  color: var(--amarelo);
+  line-height: 1;
+  letter-spacing: 3px;
+  text-shadow: 0 0 24px rgba(245, 197, 24, 0.45);
 }
 
-.semanas{
-  color: #ffffff;
-}
-
-.dias{
-  letter-spacing: 1px;
-  color: #ffffff;
-}
-
-.semanas,
-.dias {
-
+/* Dias da semana */
+.semanas {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
-  margin-top: 10px;
-  font-size: 18px;
+  gap: 5px;
+  margin-bottom: 6px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.45);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
+/* Grid dos dias */
+.dias {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+/* Bandeirinha */
 .flag {
-  color: #d6cdcd;
   width: 100%;
-  max-width: 80px;
-  margin: auto;
-  aspect-ratio: 1 / 1.1;
-  padding: 10px 0;
+  aspect-ratio: 1 / 1.28;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  font-size: clamp(12px, 2.5vw, 20px);
-  font-weight: 800;
-  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 70%, 0% 100%);
+  padding-top: 12%;
+  font-family: 'Antone', Arial, sans-serif;
+  font-size: clamp(13px, 4.5vw, 24px);
+  font-weight: 900;
+  color: #fff;
+  position: relative;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 60%, 0% 100%);
+  cursor: default;
+  user-select: none;
+  transition: filter 0.18s ease, transform 0.18s ease;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.7);
 }
 
+/* brilho no topo da bandeirola */
+.flag::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 45%;
+  background: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 100%);
+  pointer-events: none;
+}
+
+/* Fora do evento — azul escuro apagado */
 .flag.fora {
-  background-color: #0b5c9e8e;
-  opacity: 0.6;
+  background: linear-gradient(175deg, rgba(18, 80, 150, 0.4), rgba(8, 35, 90, 0.25));
+  color: rgba(255, 255, 255, 0.3);
+  text-shadow: none;
 }
 
+/* Dia bloqueado — vermelho escuro */
 .flag.bloqueado {
-  background: #912218;
-}
-
-.flag.encerrado {
-  background: #797676cb;
-}
-
-.flag.disponivel {
-  background: #265f31;
-}
-
-.flag.disponivel:hover {
-  background: rgba(3, 233, 37, 0.7);
-}
-
-.flag.encerrado:hover {
-  background: rgba(133, 147, 113, 0.7);
+  background: linear-gradient(175deg, #c4301a, #7a1508);
+  cursor: not-allowed;
+  box-shadow: inset 0 -2px 6px rgba(0, 0, 0, 0.35);
 }
 
 .flag.bloqueado:hover {
-  background: rgba(215, 70, 45, 0.7);
-} 
+  filter: brightness(1.18);
+}
 
-
-#voltarMes,
-#proximoMes {
-  position: absolute;
-  top: 60%;
-  transform: translateY(-50%);
+/* Dia encerrado — cinza com leve gradiente */
+.flag.encerrado {
+  background: linear-gradient(175deg, rgba(120, 117, 117, 0.9), rgba(68, 66, 66, 0.75));
   cursor: pointer;
-  z-index: 50;
-  background: transparent;
-  border: none;
-  color: #ffffff;
-  font-size: clamp(20px, 6vw, 26px);
-  font-weight: 900;
 }
 
-#voltarMes{
-  left: -5px;
+.flag.encerrado:hover {
+  filter: brightness(1.2);
+  transform: scale(1.05);
 }
-#proximoMes {
-  right: -5px;
+
+/* Dia disponível — verde vibrante com glow pulsante */
+.flag.disponivel {
+  background: linear-gradient(175deg, #2db347, #155c24);
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(29, 200, 60, 0.35);
+  animation: pulsoVerde 2.2s ease-in-out infinite;
+}
+
+.flag.disponivel:hover {
+  filter: brightness(1.12);
+  transform: scale(1.07);
+  animation: none;
+  box-shadow: 0 0 16px rgba(40, 220, 70, 0.55);
+}
+
+@keyframes pulsoVerde {
+  0%, 100% { box-shadow: 0 0 8px rgba(29, 200, 60, 0.3); }
+  50%       { box-shadow: 0 0 18px rgba(40, 230, 75, 0.6); }
+}
+
+/* Dia já registrado */
+.flag.encerrado.registrado {
+  background: linear-gradient(175deg, rgba(45, 140, 70, 0.65), rgba(22, 80, 40, 0.5));
 }

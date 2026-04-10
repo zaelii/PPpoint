@@ -1,129 +1,85 @@
 <!doctype html>
 <html lang="pt-br">
-  
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/script.js"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <title>Point Mobile</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="js/script.js" defer></script>
+  <title>PPpoint</title>
 </head>
 
-<body>
+<body class="fundo-ponto">
 
-<div class="cabeçalho">
-
-  <nav class="menu">
-    <button id="btnProgramacao" onclick="mostrarPagina('programacao')">Programação</button>
-    <button id="btnPonto" class="active" onclick="mostrarPagina('ponto')">Point</button>
-    <button id="btnRetrospectiva" onclick="mostrarPagina('retrospectiva')">Retrospectiva</button>
-  </nav>
-
-  <div class="area-login">
-    <button id="btnLogin" class="btnLogin" data-logged="false">Entrar</button>
+<!-- CABEÇALHO -->
+<header class="cabecalho">
+  <div class="logo">
+    <span class="logo-pp">PP</span><span class="logo-text">point</span>
   </div>
+  <button id="btnLogin" class="btnLogin" data-logged="false">Entrar</button>
+</header>
 
-</div>
+<!-- CONTEÚDO DAS PÁGINAS -->
+<main class="paginas">
 
-<!-- páginas base -->
-<div class="paginas">
-
-  <!-- página programação -->
-<!-- página programação -->
-<div class="pagina" id="programacao">
-
-  <div class="carrossel-programacao">
-
-    <button class="nav" onclick="voltarProgramacao()">&#8249;</button>
-
-    <div class="grid-programacao" id="gridProgramacao">
-
-      <!-- CARD EXEMPLO -->
-      <div class="card-dia">
-
-        <div class="data-dia">
-          <span class="semana"></span>
-          <span class="dia"></span>
-          <span class="mes"></span>
-        </div>
-
-        <div class="conteudo-dia">
-          <div class="show"></div>
-          <div class="show">  </div>
-          <div class="show"> </div>
-        </div>
-
-      </div>
-
-      <!-- OUTRO CARD -->
-      <div class="card-dia">
-
-        <div class="data-dia">
-          <span class="semana"></span>
-          <span class="dia"></span>
-          <span class="mes"></span>
-        </div>
-
-        <div class="conteudo-dia">
-          <div class="show"> </div>
-          <div class="show"> </div>
-        </div>
-
-      </div>
-
+  <!-- PÁGINA PROGRAMAÇÃO -->
+  <section class="pagina" id="programacao">
+    <div class="carrossel-programacao">
+      <button class="nav" onclick="voltarProgramacao()">&#8249;</button>
+      <div class="grid-programacao" id="gridProgramacao"></div>
+      <button class="nav" onclick="avancarProgramacao()">&#8250;</button>
     </div>
+  </section>
 
-    <button class="nav" onclick="avancarProgramacao()">&#8250;</button>
-
-  </div>
-
-</div>
-
-  <!-- página point -->
-  <div class="pagina active" id="ponto">
-
+  <!-- PÁGINA POINT -->
+  <section class="pagina active" id="ponto">
     <div class="calendario">
-
-      <!-- navegação do mês -->
-      <button id="voltarMes" onclick="mesAnterior()">&#8249;</button>
-      <button id="proximoMes" onclick="proximoMes()">&#8250;</button>
-
-      <!-- nome do mês -->
-      <div class="mes">
+      <div class="cal-nav">
+        <button id="voltarMes" onclick="mesAnterior()">&#8249;</button>
         <div class="Mes" id="Mes"></div>
+        <button id="proximoMes" onclick="proximoMes()">&#8250;</button>
       </div>
-
-      <!-- dias da semana -->
       <div class="semanas">
-        <div>D</div>
-        <div>S</div>
-        <div>T</div>
-        <div>Q</div>
-        <div>Q</div>
-        <div>S</div>
-        <div>S</div>
+        <div>D</div><div>S</div><div>T</div><div>Q</div><div>Q</div><div>S</div><div>S</div>
       </div>
-
-      <!-- dias do calendário -->
-      <div class="dias" id="dias"> </div>
-
+      <div class="dias" id="dias"></div>
     </div>
-  </div>
+  </section>
 
-  <!-- página retrospectiva -->
-  <div class="pagina" id="retrospectiva">
-    <p></p>
-  </div>
+  <!-- PÁGINA RETROSPECTIVA -->
+  <section class="pagina" id="retrospectiva">
+    <div class="retro-vazio">
+      <i class="fa-solid fa-camera-retro"></i>
+      <p>Sua retrospectiva estará aqui após o evento</p>
+    </div>
+  </section>
 
-</div>
+</main>
 
-<!-- Janela Login/Cadastro -->
+<!-- NAVEGAÇÃO INFERIOR -->
+<nav class="nav-bottom">
+  <button id="btnProgramacao" onclick="mostrarPagina('programacao')">
+    <i class="fa-solid fa-music"></i>
+    <span>Programação</span>
+  </button>
+  <button id="btnPonto" class="active" onclick="mostrarPagina('ponto')">
+    <i class="fa-solid fa-calendar-check"></i>
+    <span>Point</span>
+  </button>
+  <button id="btnRetrospectiva" onclick="mostrarPagina('retrospectiva')">
+    <i class="fa-solid fa-star"></i>
+    <span>Retro</span>
+  </button>
+</nav>
+
+<!-- MODAL LOGIN / CADASTRO -->
 <div id="janela-login" class="fundo-transparente">
   <div class="janelalogin">
-    <!-- Login -->
+    <span class="fechar" onclick="fecharLoginCadastro()">×</span>
+
     <div id="loginForm">
-      <h2>Login</h2>
+      <h2>Entrar</h2>
       <div class="input-com-icone">
         <i class="fa-solid fa-envelope"></i>
         <input type="text" id="loginUsuario" placeholder="Email">
@@ -134,16 +90,14 @@
       </div>
       <button onclick="fazerLogin()">Entrar</button>
       <button class="btn-google" onclick="loginComGoogle()">
-          Entrar com Google
+        <i class="fa-brands fa-google"></i> Entrar com Google
       </button>
-
       <span class="esqueci-senha" onclick="abrirEsqueciSenha()">Esqueci minha senha</span>
       <p>Não tem uma conta? <span class="link-cadastro" onclick="mostrarCadastro()">Cadastre-se</span></p>
     </div>
 
-    <!-- Registro -->
     <div id="registerForm" style="display:none;">
-      <h2>Crie uma conta</h2>
+      <h2>Criar conta</h2>
       <div class="input-com-icone">
         <i class="fa-solid fa-envelope"></i>
         <input type="email" id="cadastroEmail" placeholder="Email">
@@ -160,119 +114,92 @@
         <i class="fa-solid fa-lock"></i>
         <input type="password" id="cadastroSenhaConfirm" placeholder="Confirmar senha">
       </div>
-      <button onclick="registrar()">Criar</button>
+      <button onclick="registrar()">Criar conta</button>
       <p>Já tem uma conta? <span class="link-login" onclick="mostrarLogin()">Entrar</span></p>
     </div>
-
-    <span class="fechar" onclick="fecharLoginCadastro()">×</span>
   </div>
 </div>
 
-<!-- Janela Redefinir Senha -->
+<!-- MODAL ESQUECI SENHA -->
 <div id="janela-esqueci-senha" class="fundo-transparente">
   <div class="janela-recuperacao">
+    <span class="fechar" onclick="fecharEsqueciSenha()">×</span>
     <h2>Redefinir Senha</h2>
-    
     <div class="input-com-icone">
       <i class="fa-solid fa-envelope"></i>
       <input type="email" id="emailRecuperacao" placeholder="Digite seu email">
     </div>
-    
     <button onclick="enviarRecuperacao()">Enviar</button>
-    
-    <span class="fechar" onclick="fecharEsqueciSenha()">×</span>
   </div>
 </div>
 
-<!-- janela dia encerrado -->
+<!-- MODAL DIA ENCERRADO -->
 <div id="janela-dia-encerrado" class="fundo-transparente">
-  <div class="janela-encerrado">
-    <span class="fechar
-    " onclick="fecharJanelaEncerrado()">×</span>
-    <h3>Tempo de registro encerrado</h3>
-    <p>O período de registro só fica disponível até 24h após o dia que deseja registrar.</p>
+  <div class="janela-aviso encerrado">
+    <span class="fechar" onclick="fecharJanelaEncerrado()">×</span>
+    <i class="fa-solid fa-hourglass-end"></i>
+    <h3>Tempo encerrado</h3>
+    <p>O registro só fica disponível até 24h após o evento.</p>
   </div>
 </div>
 
-<!-- janela dia bloqueado -->
+<!-- MODAL DIA BLOQUEADO -->
 <div id="janela-dia-Bloqueado" class="fundo-transparente">
-  <div class="janela-bloqueado">
-    <span class="fechar
-    " onclick="fecharJanelaBloqueado()">×</span>
+  <div class="janela-aviso bloqueado">
+    <span class="fechar" onclick="fecharJanelaBloqueado()">×</span>
+    <i class="fa-solid fa-lock"></i>
     <h3>Disponível em breve</h3>
-    <p>Calma lá! Você só pode registrar no dia seguinte ao evento.</p>
+    <p>Você só pode registrar no dia seguinte ao evento.</p>
   </div>
 </div>
 
 <div id="fundoTransparente" class="fundo-transparente"></div>
 
-
-
-<!--  MODAL REGISTRO  -->
+<!-- MODAL REGISTRAR DIA -->
 <div id="janela-registrar-dia" class="modal">
   <div class="modal-box">
 
     <h2 id="tituloRegistro">Registrar dia</h2>
 
-    <!--  ÁREA DA FOTO  -->
     <div id="areaCamera">
-      <h3>Tire sua foto dentro do PP</h3>
-      <p class="aviso-foto">Capriche vai aparecer na sua retrospectiva</p>
-
-      <!-- PREVIEW DA FOTO -->
-      <img id="previewFoto"
-           style="display:none; width:100%; border-radius:12px; margin-bottom:10px;" />
-
-      <!-- BOTÕES -->
-      <button type="button" id="btnAtivarCamera" onclick="abrirOuRefazerFoto()"> Tirar Foto </button>
-
-      <!-- INPUT GALERIA -->
-      <input type="file"
-             id="inputGaleria"
-             accept="image/*"
-             style="display:none;">
+      <h3>Tire sua foto no PP</h3>
+      <p class="aviso-foto">Vai aparecer na sua retrospectiva</p>
+      <img id="previewFoto" style="display:none; width:100%; border-radius:12px; margin-bottom:10px;" />
+      <button type="button" id="btnAtivarCamera" onclick="abrirOuRefazerFoto()">
+        <i class="fa-solid fa-camera"></i> Tirar Foto
+      </button>
+      <input type="file" id="inputGaleria" accept="image/*" style="display:none;">
     </div>
 
-    <!--  NOTAS -->
     <div class="campo">
       <label>Nota para os shows da noite</label>
       <div id="notasShows"></div>
     </div>
 
-    <!--  AMIGOS  -->
     <div class="campo">
       <label for="inputAmigos">Com quem você foi? (@ do Insta)</label>
-      <input type="text"
-             id="inputAmigos"
-             list="sugestoesAmigos"
-             placeholder="@usuario"
-             autocomplete="off">
+      <input type="text" id="inputAmigos" list="sugestoesAmigos" placeholder="@usuario" autocomplete="off">
       <datalist id="sugestoesAmigos"></datalist>
     </div>
 
-    <!--  BEBIDAS  -->
     <div class="campo">
       <label>Bebeu?</label>
       <div id="listaBebidas" class="lista-opcoes"></div>
     </div>
 
-    <!--  BOTÕES  -->
     <button onclick="enviarRegistro()" class="btn-confirmar">
-      Registrar dia
+      <i class="fa-solid fa-check"></i> Registrar dia
     </button>
 
-    <button onclick="fecharJanelaRegistrarDia()" class="fechar">
-      ✖
-    </button>
+    <button onclick="fecharJanelaRegistrarDia()" class="fechar-registro">×</button>
 
   </div>
 </div>
 
-<!-- CÂMERA FULLSCREEN  -->
+<!-- CÂMERA FULLSCREEN -->
 <div id="cameraFullscreen" class="camera-full">
   <video id="videoFullscreen" autoplay playsinline></video>
-
-  <button id="btnTirarFoto" onclick="capturarFoto()"> </button>
+  <button id="btnTirarFoto" onclick="capturarFoto()"></button>
   <button id="btnFecharCamera" onclick="fecharCamera()">✖</button>
   <button id="btnTrocarCamera" onclick="trocarCamera()">🔄</button>
 </div>
@@ -280,5 +207,4 @@
 <div id="flashCamera"></div>
 
 </body>
-
 </html>

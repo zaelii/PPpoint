@@ -1,94 +1,55 @@
-@media (max-width: 450px){
-  .menu {
-    margin-top: 70px;
-    gap: 5px;
-  }
-  .btnLogin {
-    font-size: 12px;
-    padding: 5px 8px;
-  }
-  .menu button {
-    font-size: 12px;
-    padding: 6px 10px;
-  }
+/* ===== TELAS ATÉ 450px ===== */
+@media (max-width: 450px) {
 
-  .cabeçalho .Mes {
-    font-size: 18px;
-  }
-  #voltarMes, #proximoMes
-  { font-size: 24px;
-  }
-  .calendario { 
-    padding: 10px 3%;
-    width: 95%;
-  }
+  .logo-pp   { font-size: 26px; }
+  .logo-text { font-size: 19px; }
+
+  .Mes { font-size: 38px; }
+
+  .semanas, .dias { gap: 4px; }
+
+  .data-dia .dia { font-size: 34px; }
+  .artista        { font-size: 14px; }
+
+  .carrossel-programacao { padding: 12px 30px; }
 }
 
-@media (max-width: 380px){
-  .menu {
-    margin-top: 80px;
-    gap: 4px;
-  }
+/* ===== TELAS ATÉ 380px ===== */
+@media (max-width: 380px) {
 
-  .btnLogin {
-    font-size: 11px;
-    padding: 4px 6px;
-  }
+  .cabecalho { padding: 8px 12px; }
 
-  .menu button {
-    font-size: 11px;
-    padding: 5px 8px;
-  }
+  .logo-pp   { font-size: 24px; }
+  .logo-text { font-size: 17px; }
+  .btnLogin  { font-size: 14px; padding: 6px 12px; letter-spacing: 2px; }
 
-  .cabeçalho .Mes {
-    font-size: 16px;
-  }
+  .Mes { font-size: 32px; }
 
-  #voltarMes, #proximoMes {
-    font-size: 22px;
-  }
+  .semanas { font-size: 11px; }
+  .flag    { font-size: clamp(11px, 4vw, 20px); }
 
-  .calendario { padding: 8px 3%;
-    width: 95%;
-  }
+  .data-dia { min-width: 66px; padding: 12px 10px; }
+  .data-dia .dia { font-size: 30px; }
+
+  .nav-bottom button { padding: 6px 14px; font-size: 9px; }
+  .nav-bottom button i { font-size: 19px; }
+
+  .carrossel-programacao { padding: 10px 28px; }
 }
 
-@media (max-width: 320px){
-  .menu {
-    margin-top: 30px;
-    gap: 10px;
-  }
+/* ===== TELAS ATÉ 320px ===== */
+@media (max-width: 320px) {
 
-  .btnLogin{
-    font-size: 11px;
-    padding: 3px 5px;
+  .Mes { font-size: 28px; }
 
-  }
+  .semanas { font-size: 10px; gap: 3px; }
+  .dias    { gap: 3px; }
+  .flag    { font-size: clamp(10px, 3.8vw, 18px); }
 
-  .cabeçalho .Mes {
-    color: #2B2525;
-    font-family: 'Montserrat', sans-serif;
-  }
-  .menu button{
-    font-size: 11px;
-    padding: 5px 6px;
-  }
+  .calendario { padding: 16px 4%; }
 
+  .data-dia .dia { font-size: 26px; }
+  .artista       { font-size: 13px; }
 
-  .semanas,.dias{
-    font-size: 14px;
-  }
-
-  #voltarMes, #proximoMes{
-    font-size: 20px;
-  }
-
-  .calendario {
-    padding: 10px 5%;
-    margin-top: 30px;
-    width: 90%;
-    margin-top: 10px;
-  }
+  .nav-bottom button { padding: 5px 10px; }
 }
-
-

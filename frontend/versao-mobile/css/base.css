@@ -1,43 +1,71 @@
-/* base  */
+/* ===== VARIÁVEIS GLOBAIS ===== */
+:root {
+  --vermelho:      #D7462D;
+  --vermelho-esc:  #b03520;
+  --amarelo:       #F5C518;
+  --amarelo-esc:   #c9a010;
+  --verde:         #1f6b2c;
+  --verde-claro:   #27943c;
+  --azul-esc:      #08193a;
+  --preto-noite:   #0d0500;
+  --branco:        #ffffff;
+  --cinza:         rgba(90, 88, 88, 0.8);
 
-* { 
+  --glass-dark:    rgba(8, 3, 0, 0.6);
+  --glass-borda:   rgba(255, 255, 255, 0.1);
+
+  --nav-h:         65px;
+  --header-h:      56px;
+
+  --radius-sm:     8px;
+  --radius-md:     14px;
+  --radius-lg:     20px;
+
+  --shadow:        0 8px 32px rgba(0, 0, 0, 0.55);
+  --shadow-sm:     0 2px 12px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== FONTES ===== */
+@font-face {
+  font-family: 'Antone';
+  src: url('/frontend/versao-mobile/css/fonts/Antone DEMO.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Delirium';
+  src: url('/frontend/versao-mobile/css/fonts/DELIRIUM NCV.ttf') format('truetype');
+}
+
+/* ===== RESET ===== */
+* {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
+/* ===== BODY ===== */
 body {
   font-family: Arial, sans-serif;
-  text-align: center;
+  background-color: var(--preto-noite);
   background-size: cover;
   background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
   min-height: 100vh;
   overflow-x: hidden;
-  background-image: url('/frontend/versao-mobile/css/imagens/casaeluzes.png');
+  /* espaço para nav inferior */
+  padding-bottom: var(--nav-h);
 }
 
 body.fundo-ponto {
   background-image: url('/frontend/versao-mobile/css/imagens/casaeluzes.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 
 body.fundo-programacao {
   background-image: none;
-  background-size: contain;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-color:#012773;
-
-  
+  background-color: #010b1e;
 }
 
 body.fundo-retro {
   background-image: url('/frontend/versao-mobile/css/imagens/casaeluzes.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
-

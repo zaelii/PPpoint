@@ -1,36 +1,4 @@
-.janela-encerrado,
-.janela-bloqueado {
-  z-index: 10000;
-  width: 90%;
-  max-width: 300px;
-  padding: 30px 5% 70px;
-  text-align: center;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  border-radius: 10px;
-}
-
-.janela-encerrado {
-  background-color: #a09e9e;
-}
-
-.janela-bloqueado {
-  background-color: #D7462D;
-}
-
-.janela-encerrado p,
-.janela-bloqueado p {
-  font-size: 17px;
-  margin-top: 15px; 
-}
-
-.janela-encerrado h3,
-.janela-bloqueado h3 {
-  font-size: 20px;   
-}
-
+/* ===== FUNDO ESCURECIDO ===== */
 .fundo-transparente {
   display: none;
   position: fixed;
@@ -38,17 +6,81 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.78);
   z-index: 9998;
-  backdrop-filter: blur(3px); 
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
 }
 
+/* ===== JANELAS DE AVISO (encerrado / bloqueado) ===== */
+.janela-aviso {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10001;
+  width: 88%;
+  max-width: 300px;
+  padding: 44px 24px 36px;
+  text-align: center;
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  box-shadow: var(--shadow);
+  animation: popIn 0.2s ease both;
+}
 
-.fechar{
-  position: absolute;
-  top: 10px;
-  right: 10px;
+@keyframes popIn {
+  from { opacity: 0; transform: translate(-50%, -46%) scale(0.94); }
+  to   { opacity: 1; transform: translate(-50%, -50%) scale(1);    }
+}
+
+.janela-aviso i {
+  font-size: 38px;
+  margin-bottom: 2px;
+}
+
+.janela-aviso h3 {
   font-size: 20px;
-  color: #000000;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.janela-aviso p {
+  font-size: 14px;
+  line-height: 1.55;
+  opacity: 0.88;
+}
+
+/* Encerrado — cinza */
+.janela-aviso.encerrado {
+  background: #575454;
+  color: #fff;
+}
+
+/* Bloqueado — vermelho */
+.janela-aviso.bloqueado {
+  background: var(--vermelho);
+  color: #fff;
+}
+
+/* ===== BOTÃO FECHAR nos avisos ===== */
+.janela-aviso .fechar {
+  position: absolute;
+  top: 13px;
+  right: 16px;
+  font-size: 22px;
+  color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
+  line-height: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.janela-aviso .fechar:hover {
+  color: #fff;
 }
